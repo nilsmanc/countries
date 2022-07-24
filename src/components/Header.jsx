@@ -1,41 +1,42 @@
-import styled from 'styled-components';
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { IoMoon, IoMoonOutline } from 'react-icons/io5';
-import { Container } from './Container';
+import styled from 'styled-components'
+import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import { IoMoon, IoMoonOutline } from 'react-icons/io5'
+import { Container } from './Container'
 
 const HeaderEl = styled.header`
   box-shadow: var(--shadow);
-  background-color: var(--color-ui-base);
-`;
+  background-color: var(--colors-ui-base);
+`
 const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 2rem 0;
-`;
+`
 
 const Title = styled(Link).attrs({ to: '/' })`
   color: var(--colors-text);
   font-size: var(--fs-sm);
   text-decoration: none;
   font-weight: var(--fw-bold);
-`;
+`
 
 const ModeSwithcer = styled.div`
   color: var(--colors-text);
   font-size: var(--fs-sm);
   cursor: pointer;
-  // font-weight: var(--fw-bold);
   text-transform: capitalize;
-`;
+`
 
 export const Header = () => {
-  const [theme, setTheme] = useState('light');
-  const toggleTheme = () => setTheme(theme === 'light' ? 'dark' : 'light');
+  const [theme, setTheme] = useState('light')
+  const toggleTheme = () => setTheme(theme === 'light' ? 'dark' : 'light')
+
   useEffect(() => {
-    document.body.setAttribute('data-theme', theme);
-  }, [theme]);
+    document.body.setAttribute('data-theme', theme)
+  }, [theme])
+
   return (
     <HeaderEl>
       <Container>
@@ -48,5 +49,5 @@ export const Header = () => {
         </Wrapper>
       </Container>
     </HeaderEl>
-  );
-};
+  )
+}

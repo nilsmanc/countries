@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
-import styled from 'styled-components';
-import { CustomSelect } from './CustomSelect';
-import { Search } from './Search';
+import { useState, useEffect } from 'react'
+import styled from 'styled-components'
+import { CustomSelect } from './CustomSelect'
+import { Search } from './Search'
 
 const options = [
   { value: 'Africa', label: 'Africa' },
@@ -9,7 +9,7 @@ const options = [
   { value: 'Asia', label: 'Asia' },
   { value: 'Europe', label: 'Europe' },
   { value: 'Oceania', label: 'Oceania' },
-];
+]
 
 const Wrapper = styled.div`
   display: flex;
@@ -20,17 +20,17 @@ const Wrapper = styled.div`
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-  } ;
-`;
+  }
+`
 
 export const Controls = ({ onSearch }) => {
-  const [search, setSearch] = useState('');
-  const [region, setRegion] = useState('');
+  const [search, setSearch] = useState('')
+  const [region, setRegion] = useState('')
 
   useEffect(() => {
-    const regionValue = region?.value || '';
-    onSearch(search, regionValue);
-  }, [search, region]);
+    const regionValue = region?.value || ''
+    onSearch(search, regionValue)
+  }, [search, region])
   return (
     <Wrapper>
       <Search search={search} setSearch={setSearch} />
@@ -43,5 +43,5 @@ export const Controls = ({ onSearch }) => {
         onChange={setRegion}
       />
     </Wrapper>
-  );
-};
+  )
+}
