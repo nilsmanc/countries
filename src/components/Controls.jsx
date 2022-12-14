@@ -31,6 +31,7 @@ export const Controls = ({ onSearch }) => {
     const regionValue = region?.value || ''
     onSearch(search, regionValue)
   }, [search, region])
+
   return (
     <Wrapper>
       <Search search={search} setSearch={setSearch} />

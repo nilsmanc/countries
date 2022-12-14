@@ -1,3 +1,4 @@
+import React from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
@@ -5,10 +6,14 @@ import { List } from '../components/List'
 import { ALL_COUNTRIES } from '../config'
 import { Controls } from '../components/Controls'
 import { Card } from '../components/Card'
+import styled from 'styled-components'
 
 export const HomePage = ({ setCountries, countries }) => {
   const navigate = useNavigate()
   const [filteredCountries, setFilteredCountries] = useState(countries)
+  const [isShowAll, setIsShowAll] = useState(false)
+
+  console.log(filteredCountries)
 
   const handleSearch = (search, region) => {
     let data = [...countries]
@@ -23,6 +28,16 @@ export const HomePage = ({ setCountries, countries }) => {
     setFilteredCountries(data)
   }
 
+  const Button = styled.div`
+    width: 100%;
+    color: var(--colors-text);
+    background: none;
+    border-top: 1px solid var(--colors-text);
+    padding-top: 10px;
+    cursor: pointer;
+    text-align: center;
+  `
+
   useEffect(() => {
     if (!countries.length) axios.get(ALL_COUNTRIES).then(({ data }) => setCountries(data))
   }, [])
@@ -35,7 +50,7 @@ export const HomePage = ({ setCountries, countries }) => {
     <>
       <Controls onSearch={handleSearch} />
       <List>
-        {filteredCountries.map((c) => {
+        {(isShowAll ? filteredCountries : filteredCountries.slice(0, 8)).map((c) => {
           const countryInfo = {
             img: c.flags.png,
             name: c.name,
@@ -59,6 +74,9 @@ export const HomePage = ({ setCountries, countries }) => {
           )
         })}
       </List>
+      {!isShowAll && filteredCountries.length > 8 && (
+        <Button onClick={() => setIsShowAll(true)}>Show All</Button>
+      )}
     </>
   )
 }
