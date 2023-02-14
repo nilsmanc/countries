@@ -23,12 +23,18 @@ const Wrapper = styled.div`
   }
 `
 
-export const Controls = ({ onSearch }) => {
+type ControlsProps = {
+  onSearch: (search: string, regionValue: string) => void
+}
+
+export const Controls: React.FC<ControlsProps> = ({ onSearch }) => {
   const [search, setSearch] = useState('')
   const [region, setRegion] = useState('')
 
   useEffect(() => {
+    //@ts-ignore
     const regionValue = region?.value || ''
+
     onSearch(search, regionValue)
   }, [search, region])
 

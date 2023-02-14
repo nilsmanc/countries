@@ -87,7 +87,31 @@ const Tag = styled.span`
   cursor: pointer;
 `
 
-export const Info = (props) => {
+type Languages = {
+  name: string
+}
+
+type Currency = {
+  code: string
+  name: string
+}
+
+type InfoProps = {
+  name: string
+  nativeName: string
+  flag: string
+  capital: string
+  population: string
+  region: string
+  subregion: string
+  topLevelDomain: []
+  currencies: Currency[]
+  languages: Languages[]
+  borders: []
+  navigate: (string) => void
+}
+
+export const Info: React.FC<InfoProps> = (props) => {
   const {
     name,
     nativeName,

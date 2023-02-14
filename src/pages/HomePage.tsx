@@ -13,9 +13,7 @@ export const HomePage = ({ setCountries, countries }) => {
   const [filteredCountries, setFilteredCountries] = useState(countries)
   const [isShowAll, setIsShowAll] = useState(false)
 
-  console.log(filteredCountries)
-
-  const handleSearch = (search, region) => {
+  const handleSearch = (search?, region?) => {
     let data = [...countries]
     if (region) {
       data = data.filter((c) => c.region.includes(region))

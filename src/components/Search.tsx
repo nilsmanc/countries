@@ -29,7 +29,12 @@ const Input = styled.input.attrs({
   background-color: var(--colors-ui-base);
 `
 
-export const Search = ({ search, setSearch }) => {
+type SearchProps = {
+  search: string
+  setSearch: (searchValue: string) => void
+}
+
+export const Search: React.FC<SearchProps> = ({ search, setSearch }) => {
   return (
     <InputContainer>
       <IoSearch />

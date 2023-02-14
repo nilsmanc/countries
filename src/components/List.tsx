@@ -20,6 +20,10 @@ const Wrapper = styled.section`
   }
 `
 
-export const List = ({ children }) => {
+type ListProps = {
+  children: React.ReactNode
+}
+
+export const List: React.FC<ListProps> = ({ children }) => {
   return <Wrapper>{children}</Wrapper>
 }

@@ -36,7 +36,19 @@ const CardListItem = styled.li`
     font-weight: var(--fw-bold);
   }
 `
-export const Card = ({ img, name, info = [], onClick }) => {
+type Info = {
+  title: string
+  description: string
+}
+
+type CardProps = {
+  img: string
+  name: string
+  info: Info[]
+  onClick: () => void
+}
+
+export const Card: React.FC<CardProps> = ({ img, name, info = [], onClick }) => {
   return (
     <Wrapper onClick={onClick}>
       <CardImage src={img} alt={name} />
