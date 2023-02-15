@@ -1,7 +1,9 @@
+import { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
-import { useState, useEffect } from 'react'
+
 import { filterByCode } from '../config'
+import { CountryInfo, Currency, Languages } from '../types'
 
 const Wrapper = styled.section`
   margin-top: 3rem;
@@ -87,15 +89,6 @@ const Tag = styled.span`
   cursor: pointer;
 `
 
-type Languages = {
-  name: string
-}
-
-type Currency = {
-  code: string
-  name: string
-}
-
 type InfoProps = {
   name: string
   nativeName: string
@@ -108,7 +101,7 @@ type InfoProps = {
   currencies: Currency[]
   languages: Languages[]
   borders: []
-  navigate: (string) => void
+  navigate: (string: string) => void
 }
 
 export const Info: React.FC<InfoProps> = (props) => {
@@ -131,7 +124,9 @@ export const Info: React.FC<InfoProps> = (props) => {
 
   useEffect(() => {
     if (borders.length)
-      axios.get(filterByCode(borders)).then(({ data }) => setNeighbours(data.map((c) => c.name)))
+      axios
+        .get(filterByCode(borders))
+        .then(({ data }) => setNeighbours(data.map((c: CountryInfo) => c.name)))
   }, [borders])
 
   return (

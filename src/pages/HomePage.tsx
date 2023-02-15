@@ -1,19 +1,26 @@
 import React from 'react'
+import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import styled from 'styled-components'
+
 import { List } from '../components/List'
 import { ALL_COUNTRIES } from '../config'
 import { Controls } from '../components/Controls'
 import { Card } from '../components/Card'
-import styled from 'styled-components'
+import { Country } from '../types'
 
-export const HomePage = ({ setCountries, countries }) => {
+type HomePageProps = {
+  setCountries: ([]) => void
+  countries: Country[]
+}
+
+export const HomePage: React.FC<HomePageProps> = ({ setCountries, countries }) => {
   const navigate = useNavigate()
   const [filteredCountries, setFilteredCountries] = useState(countries)
   const [isShowAll, setIsShowAll] = useState(false)
 
-  const handleSearch = (search?, region?) => {
+  const handleSearch = (search?: string, region?: string) => {
     let data = [...countries]
     if (region) {
       data = data.filter((c) => c.region.includes(region))

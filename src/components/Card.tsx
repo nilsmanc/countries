@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 
+import { Info } from '../types'
+
 const Wrapper = styled.article`
   border-radius: var(--radii);
   background-color: car(--colors-ui-base);
@@ -36,10 +38,6 @@ const CardListItem = styled.li`
     font-weight: var(--fw-bold);
   }
 `
-type Info = {
-  title: string
-  description: string
-}
 
 type CardProps = {
   img: string
