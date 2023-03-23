@@ -8,4 +8,4 @@ React, Typescript, styled-components, React-Router v6, axios.
 
 ![third](/public/search.png)
 
-![fourth](/public/filter.png)
+![fourth](/public/filtered.png)
